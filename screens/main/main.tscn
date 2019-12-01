@@ -1,0 +1,508 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://screens/main/main.gd" type="Script" id=1]
+[ext_resource path="res://hud/screen_text/text_container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hud/game_map/game_map.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=4]
+[ext_resource path="res://assets/tinyfont.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=6]
+[ext_resource path="res://screens/main/pause_menu.gd" type="Script" id=7]
+[ext_resource path="res://scripts/menu_item.gd" type="Script" id=8]
+[ext_resource path="res://assets/italic_8px.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://music/main.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/player_dead_reverse.wav" type="AudioStream" id=11]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.169312, 0.793651 )
+colors = PoolColorArray( 0.803922, 0.968627, 0.886275, 1, 0.803922, 0.968627, 0.886275, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 3, 10, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+angular_velocity = 1.05
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 80.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.169312, 0.78836 )
+colors = PoolColorArray( 0.890196, 0.901961, 1, 1, 0.890196, 0.901961, 1, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 3, 10, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+angular_velocity = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 80.0
+color_ramp = SubResource( 5 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.169312, 0.793651 )
+colors = PoolColorArray( 1, 0.988235, 0.25098, 1, 1, 0.988235, 0.25098, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 2
+emission_box_extents = Vector3( 3, 10, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+angular_velocity = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 80.0
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 136 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "show"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 136 ), Vector2( 0, 128 ), Vector2( 0, 128 ), Vector2( 0, 136 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 80, 45 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 80, 45 ), Vector2( -160, -90 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 7.46426, 1 ),
+"update": 0,
+"values": [ Vector2( -160, -90 ), Vector2( 80, 45 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[node name="main" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="levels" type="Node2D" parent="."]
+pause_mode = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="text_layer" type="CanvasLayer" parent="."]
+pause_mode = 1
+editor/display_folded = true
+layer = 5
+
+[node name="text_container" parent="text_layer" instance=ExtResource( 2 )]
+
+[node name="hud_layer" type="CanvasLayer" parent="."]
+editor/display_folded = true
+
+[node name="hud" type="Node2D" parent="hud_layer"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="game_map" parent="hud_layer/hud" instance=ExtResource( 3 )]
+margin_left = 214.0
+margin_top = 1.0
+margin_right = 239.0
+margin_bottom = 25.0
+
+[node name="chrystals" type="Node2D" parent="hud_layer/hud"]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="green" type="Sprite" parent="hud_layer/hud/chrystals"]
+self_modulate = Color( 1, 1, 1, 0.258824 )
+position = Vector2( 180, 12 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 128, 160, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="original" type="Sprite" parent="hud_layer/hud/chrystals/green"]
+visible = false
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 64, 160, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="particles" type="Particles2D" parent="hud_layer/hud/chrystals/green"]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 3 )
+
+[node name="white" type="Sprite" parent="hud_layer/hud/chrystals"]
+self_modulate = Color( 1, 1, 1, 0.258824 )
+position = Vector2( 192, 12 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 128, 160, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="original" type="Sprite" parent="hud_layer/hud/chrystals/white"]
+visible = false
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 96, 160, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="particles" type="Particles2D" parent="hud_layer/hud/chrystals/white"]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+
+[node name="red" type="Sprite" parent="hud_layer/hud/chrystals"]
+self_modulate = Color( 1, 1, 1, 0.258824 )
+position = Vector2( 204, 12 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 128, 160, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="original" type="Sprite" parent="hud_layer/hud/chrystals/red"]
+visible = false
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 64, 176, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="particles" type="Particles2D" parent="hud_layer/hud/chrystals/red"]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 9 )
+
+[node name="energy" type="Node2D" parent="hud_layer/hud"]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="heart_1" type="Sprite" parent="hud_layer/hud/energy"]
+position = Vector2( 8, 8 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 136, 144, 8, 8 )
+
+[node name="heart_2" type="Sprite" parent="hud_layer/hud/energy"]
+position = Vector2( 16, 8 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 136, 144, 8, 8 )
+
+[node name="heart_3" type="Sprite" parent="hud_layer/hud/energy"]
+position = Vector2( 24, 8 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 136, 144, 8, 8 )
+
+[node name="special_messages" type="Node2D" parent="hud_layer/hud"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="message" type="Node2D" parent="hud_layer/hud/special_messages"]
+position = Vector2( 0, 136 )
+
+[node name="back" type="Polygon2D" parent="hud_layer/hud/special_messages/message"]
+color = Color( 0, 0, 0, 0.34902 )
+polygon = PoolVector2Array( 0, 0, 240, 0, 240, 8, 0, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bottom_label" type="Label" parent="hud_layer/hud/special_messages/message"]
+margin_right = 240.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 240, 14 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Game Saved"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="msganim" type="AnimationPlayer" parent="hud_layer/hud/special_messages/message"]
+autoplay = "default"
+anims/default = SubResource( 10 )
+anims/show = SubResource( 11 )
+
+[node name="pause_layer" type="CanvasLayer" parent="."]
+editor/display_folded = true
+
+[node name="pause" type="Node2D" parent="pause_layer"]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pause_sprite" type="Sprite" parent="pause_layer/pause"]
+modulate = Color( 0, 0, 0, 0.541176 )
+position = Vector2( 120, 72 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="map" type="Node2D" parent="pause_layer/pause"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pause_menu" type="Node2D" parent="pause_layer/pause"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="continue" type="Node2D" parent="pause_layer/pause/pause_menu"]
+position = Vector2( 172, 104 )
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="pause_layer/pause/pause_menu/continue"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 9 )
+text = "continue"
+uppercase = true
+
+[node name="quit" type="Node2D" parent="pause_layer/pause/pause_menu"]
+position = Vector2( 172, 120 )
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="pause_layer/pause/pause_menu/quit"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 9 )
+text = "quit"
+uppercase = true
+
+[node name="fade_layer" type="CanvasLayer" parent="."]
+
+[node name="fadeanim" type="AnimationPlayer" parent="fade_layer"]
+autoplay = "default"
+playback_process_mode = 0
+anims/default = SubResource( 12 )
+anims/fade_in = SubResource( 13 )
+anims/fade_out = SubResource( 14 )
+
+[node name="fade_sprite" type="Sprite" parent="fade_layer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -160, -90 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+
+[node name="loadtimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
+[node name="screentimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
+stream = ExtResource( 10 )
+bus = "music"
+
+[node name="vol_pitch_control" type="AnimationPlayer" parent="music"]
+autoplay = "default"
+anims/default = SubResource( 15 )
+anims/fade_in = SubResource( 16 )
+anims/fade_out = SubResource( 17 )
+
+[node name="pitch_control" type="AnimationPlayer" parent="music"]
+autoplay = "normal"
+playback_speed = 10.0
+anims/normal = SubResource( 18 )
+anims/slow = SubResource( 19 )
+
+[node name="level_restart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "sfx"
+[connection signal="pause_finished" from="pause_layer/pause/pause_menu" to="." method="_on_pause_menu_pause_finished" flags=3]
+[connection signal="timeout" from="loadtimer" to="." method="_on_loadtimer_timeout"]
+[connection signal="timeout" from="screentimer" to="." method="_on_screentimer_timeout"]
+[connection signal="animation_finished" from="music/vol_pitch_control" to="." method="_on_vol_pitch_control_animation_finished"]

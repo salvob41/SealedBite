@@ -1,0 +1,131 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://props/crumbling_block/blocks_group.gd" type="Script" id=1]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=2]
+[ext_resource path="res://props/crumbling_block/block_physics.tres" type="PhysicsMaterial" id=3]
+[ext_resource path="res://props/crumbling_block/block.gd" type="Script" id=4]
+
+[node name="snow_blocks_group" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.278431 )
+position = Vector2( 0, 4 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 40, 64, 8, 8 )
+
+[node name="block_1" type="RigidBody2D" parent="."]
+position = Vector2( 3, 2 )
+collision_layer = 0
+mass = 10.0
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="block_1"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 50, 72, 3, 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block_1"]
+visible = false
+polygon = PoolVector2Array( -2, -2, -2, 1, 1, 1, 1, -1, 0, -2 )
+
+[node name="block_2" type="RigidBody2D" parent="."]
+position = Vector2( 2, 7 )
+collision_layer = 0
+mass = 10.0
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="block_2"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 53, 72, 3, 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block_2"]
+visible = false
+polygon = PoolVector2Array( -2, -1, -2, 1, 1, 1, 1, 0, 0, -1 )
+
+[node name="block_3" type="RigidBody2D" parent="."]
+position = Vector2( 3, 5 )
+collision_layer = 0
+mass = 10.0
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="block_3"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 50, 75, 2, 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block_3"]
+visible = false
+polygon = PoolVector2Array( -1, -1, -1, 1, 1, 1, 1, -1 )
+
+[node name="block_4" type="RigidBody2D" parent="."]
+position = Vector2( -2, 7 )
+collision_layer = 0
+mass = 10.0
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="block_4"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 77, 3, 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block_4"]
+visible = false
+polygon = PoolVector2Array( -2, -2, -2, 0, -1, 1, 1, 1, 1, -1, 0, -2 )
+
+[node name="block_5" type="RigidBody2D" parent="."]
+position = Vector2( -2, 2 )
+collision_layer = 0
+mass = 10.0
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="block_5"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 53, 74, 4, 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block_5"]
+visible = false
+polygon = PoolVector2Array( -1, -2, -2, -1, -2, 2, 0, 2, 0, 1, 1, 0, 1, -2 )
+
+[node name="block_6" type="RigidBody2D" parent="."]
+position = Vector2( 0, 4 )
+collision_layer = 0
+mass = 10.0
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="block_6"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 43, 74, 2, 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="block_6"]
+visible = false
+polygon = PoolVector2Array( -1, -2, -1, 1, 1, 1, 1, -2 )

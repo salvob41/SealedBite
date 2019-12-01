@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/pixel.png" type="Texture" id=1]
+[ext_resource path="res://props/water/lava.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise : hint_black;
+uniform vec4 color1 : hint_color;
+uniform vec4 color2 : hint_color;
+uniform vec4 color3 : hint_color;
+
+void fragment()
+{
+	float speed = 0.001;
+	float a0 = texture( noise, vec2( UV.x / 128.0 + 1.5 * speed * TIME + 0.234, 0.15 * TIME ) ).r * 10.0 - 4.0;
+	float a1 = texture( noise, vec2( UV.x / 128.0 + speed * TIME, 0.1 * TIME ) ).r * 40.0;
+	float a2 = texture( noise, vec2( UV.x / 128.0 + 0.5 * speed * TIME, 0.05 * TIME ) ).r * 21.0 + 25.0;
+	
+	if( UV.y < a0 )
+	{
+		COLOR = vec4( 0.0 );
+	}
+	else if( UV.y < a1 )
+	{
+		COLOR = color1;
+	}
+	else if( UV.y < a2 )
+	{
+		COLOR = color2;
+	}
+	else
+	{
+		COLOR = color3;
+	}
+}"
+
+[sub_resource type="OpenSimplexNoise" id=2]
+seed = 234523
+period = 25.0
+persistence = 0.256
+lacunarity = 2.04
+
+[sub_resource type="NoiseTexture" id=3]
+width = 64
+height = 64
+seamless = true
+bump_strength = 32.0
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/color1 = Color( 0.976471, 0.639216, 0.105882, 1 )
+shader_param/color2 = Color( 0.980392, 0.415686, 0.0392157, 1 )
+shader_param/color3 = Color( 0.87451, 0.243137, 0.137255, 1 )
+shader_param/noise = SubResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.976471, 0.639216, 0.105882, 1, 0.890196, 0.345098, 0.254902, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+resource_local_to_scene = true
+emission_shape = 2
+emission_box_extents = Vector3( 1, 100, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+angular_velocity = 1.49184e-019
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 10.0
+color_ramp = SubResource( 7 )
+
+[node name="lava" type="TextureRect"]
+material = SubResource( 4 )
+margin_right = 352.0
+margin_bottom = 64.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 2 )
+
+[node name="player_death" type="Area2D" parent="."]
+visible = false
+monitoring = false
+collision_layer = 256
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="player_death"]
+shape = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bubbles_timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="particles" type="Particles2D" parent="."]
+position = Vector2( 187, 0 )
+rotation = -1.57079
+amount = 40
+lifetime = 4.0
+speed_scale = 0.5
+visibility_rect = Rect2( -200, -200, 400, 400 )
+process_material = SubResource( 8 )
+[connection signal="timeout" from="bubbles_timer" to="." method="_on_bubbles_timer_timeout"]

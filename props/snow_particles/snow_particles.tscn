@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type particles;
+
+
+
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0)
+	s = 305420679;
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0)
+		s += 2147483647;
+	seed = uint(s);
+	return float(seed % uint(65536)) / 65535.0;
+}
+
+float rand_from_seed_m1_p1(inout uint seed) {
+	return rand_from_seed(seed) * 2.0 - 1.0;
+}
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+float pos2vel_x( float pos0 )
+{
+	float half_block = 32.0;
+	float pos = mod( pos0, 2.0 * half_block ) - half_block;
+	float vel = sin( pos / half_block );
+	return vel;
+}
+
+void vertex() {
+	vec2 Extents = vec2( 320, 0 );
+	vec2 InitVelXRange = vec2( 5, 20 );
+	
+	uint base_number = NUMBER;// / uint(trail_divisor);
+	uint alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	
+
+	if( RESTART )
+	{
+		// place particles randomly on top
+		TRANSFORM[3].x = Extents.x * ( 2.0 * rand_from_seed( alt_seed ) - 1.0 );
+		TRANSFORM[3].xy += EMISSION_TRANSFORM[3].xy;
+		VELOCITY.y = InitVelXRange.x + ( InitVelXRange.y - InitVelXRange.x ) * rand_from_seed( alt_seed );// + 3.0 * rand_from_seed( alt_seed );
+		CUSTOM.w = rand_from_seed( alt_seed ) * 100.0; // random initial phase
+		//VELOCITY.x = pos2vel_x( TRANSFORM[3].x ) * 20.0;
+		if( rand_from_seed( alt_seed ) < 0.5 )
+		{
+			COLOR = vec4( 0.7254901960784314, 0.7490196078431373, 0.9843137254901961, 1.0 );
+		}
+	}
+	else
+	{
+		//VELOCITY.x += 5.0 * ( rand_from_seed( alt_seed ) - 0.5 );
+		//VELOCITY.x *= 0.9;
+		VELOCITY.x += 0.2 * cos( ( TRANSFORM[3].y - CUSTOM.w ) * 0.5 );
+	}
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="snow_particles" type="Particles2D"]
+z_index = 100
+z_as_relative = false
+amount = 800
+lifetime = 20.0
+preprocess = 60.0
+visibility_rect = Rect2( -200, 0, 400, 200 )
+local_coords = false
+process_material = SubResource( 2 )

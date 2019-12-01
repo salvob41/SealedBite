@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://screens/start_menu/check_menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
+[ext_resource path="res://assets/italic_8px.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://scripts/menu_item.gd" type="Script" id=4]
+
+[node name="check_menu" type="Node2D"]
+script = ExtResource( 1 )
+is_active = true
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.815686 )
+position = Vector2( 116, 76 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 28.0
+margin_top = 48.0
+margin_right = 220.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "overwite existing game?"
+uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="no" type="Node2D" parent="."]
+position = Vector2( 144, 72 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="no"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "no"
+uppercase = true
+
+[node name="yes" type="Node2D" parent="."]
+position = Vector2( 80, 72 )
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="yes"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Yes"
+uppercase = true

@@ -1,0 +1,2507 @@
+[gd_scene load_steps=97 format=2]
+
+[ext_resource path="res://props/avalanche/avalanche.gd" type="Script" id=1]
+[ext_resource path="res://assets/avalanche_particle.png" type="Texture" id=2]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/lava_jet.wav" type="AudioStream" id=4]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 350, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 130.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 300, 1 )
+flag_disable_z = true
+spread = 10.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 130.0
+angular_velocity = 428.11
+angular_velocity_random = 0.48
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=14]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=21]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=22]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=23]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=24]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=25]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=26]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=27]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=28]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=29]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=30]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=31]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=32]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=33]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=34]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=35]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=36]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=37]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=38]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=39]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=40]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=41]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=42]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=43]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=44]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=45]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=46]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=47]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=48]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=49]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=50]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=51]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=52]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=53]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=54]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=55]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=56]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=57]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=58]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=59]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=60]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=61]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=62]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=63]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=64]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=65]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=66]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=67]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=68]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=69]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=70]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=71]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=72]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=73]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=74]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=75]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=76]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=77]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=78]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=79]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=80]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=81]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=82]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=83]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=84]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=85]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=86]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=87]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=88]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=89]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=90]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=91]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=92]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[node name="avalanche" type="Node2D"]
+position = Vector2( 32, -132 )
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 224, 8 )
+rotation = -2.48623
+amount = 280
+lifetime = 3.0
+preprocess = 10.0
+visibility_rect = Rect2( -200, -200, 400, 400 )
+local_coords = false
+process_material = SubResource( 1 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 216, 16 )
+rotation = -2.61799
+amount = 75
+lifetime = 4.0
+preprocess = 10.0
+visibility_rect = Rect2( -400, -400, 800, 800 )
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 2 )
+
+[node name="base" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 112, 124, 156, 56, 216, 4, 255.428, -10.7854, 264, -40, 304, -72, 356, -104, 384, -156, 396, -184, 408, -192, 428, -208, 1092, -208, 1092, 276, -32, 276, -20, 256, 20, 236, 72, 196, 96, 156 )
+
+[node name="balls" type="Node2D" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="big_ball_1" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 148, 60 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_1"]
+autoplay = "cycle"
+anims/cycle = SubResource( 3 )
+
+[node name="big_ball_33" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 320, -80 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_33"]
+autoplay = "cycle"
+anims/cycle = SubResource( 4 )
+
+[node name="big_ball_34" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 328, -96 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_34"]
+autoplay = "cycle"
+anims/cycle = SubResource( 5 )
+
+[node name="big_ball_35" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 344, -104 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_35"]
+autoplay = "cycle"
+anims/cycle = SubResource( 6 )
+
+[node name="big_ball_36" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 364, -128 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_36"]
+autoplay = "cycle"
+anims/cycle = SubResource( 7 )
+
+[node name="big_ball_37" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 372, -152 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_37"]
+autoplay = "cycle"
+anims/cycle = SubResource( 8 )
+
+[node name="big_ball_38" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 384, -176 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_38"]
+autoplay = "cycle"
+anims/cycle = SubResource( 9 )
+
+[node name="big_ball_39" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 404, -196 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_39"]
+autoplay = "cycle"
+anims/cycle = SubResource( 10 )
+
+[node name="big_ball_40" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 428, -204 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_40"]
+autoplay = "cycle"
+anims/cycle = SubResource( 11 )
+
+[node name="big_ball_9" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 228, -8 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_9"]
+autoplay = "cycle"
+anims/cycle = SubResource( 12 )
+
+[node name="big_ball_10" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 248, -20 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_10"]
+autoplay = "cycle"
+anims/cycle = SubResource( 13 )
+
+[node name="big_ball_12" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 264, -44 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_12"]
+autoplay = "cycle"
+anims/cycle = SubResource( 14 )
+
+[node name="big_ball_13" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 280, -60 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_13"]
+autoplay = "cycle"
+anims/cycle = SubResource( 15 )
+
+[node name="big_ball_14" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 300, -68 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_14"]
+autoplay = "cycle"
+anims/cycle = SubResource( 16 )
+
+[node name="big_ball_32" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 132, 144 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_32"]
+autoplay = "cycle"
+anims/cycle = SubResource( 17 )
+
+[node name="big_ball_2" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 144, 76 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_2"]
+autoplay = "cycle"
+anims/cycle = SubResource( 18 )
+
+[node name="big_ball_3" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 132, 88 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_3"]
+autoplay = "cycle"
+anims/cycle = SubResource( 19 )
+
+[node name="big_ball_4" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 120, 112 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_4"]
+autoplay = "cycle"
+anims/cycle = SubResource( 20 )
+
+[node name="big_ball_5" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 164, 44 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_5"]
+autoplay = "cycle"
+anims/cycle = SubResource( 21 )
+
+[node name="big_ball_6" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 180, 32 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_6"]
+autoplay = "cycle"
+anims/cycle = SubResource( 22 )
+
+[node name="big_ball_7" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 220, 52 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_7"]
+autoplay = "cycle"
+anims/cycle = SubResource( 23 )
+
+[node name="big_ball_8" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 232, 16 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_8"]
+autoplay = "cycle"
+anims/cycle = SubResource( 24 )
+
+[node name="big_ball_11" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 196, 72 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_11"]
+autoplay = "cycle"
+anims/cycle = SubResource( 25 )
+
+[node name="big_ball_15" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 96, 128 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_15"]
+autoplay = "cycle"
+anims/cycle = SubResource( 26 )
+
+[node name="big_ball_16" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 116, 128 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_16"]
+autoplay = "cycle"
+anims/cycle = SubResource( 27 )
+
+[node name="big_ball_17" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 92, 148 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_17"]
+autoplay = "cycle"
+anims/cycle = SubResource( 28 )
+
+[node name="big_ball_18" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 80, 164 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_18"]
+autoplay = "cycle"
+anims/cycle = SubResource( 29 )
+
+[node name="big_ball_19" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 72, 184 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_19"]
+autoplay = "cycle"
+anims/cycle = SubResource( 30 )
+
+[node name="big_ball_20" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 56, 196 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_20"]
+autoplay = "cycle"
+anims/cycle = SubResource( 31 )
+
+[node name="big_ball_21" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 44, 216 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_21"]
+autoplay = "cycle"
+anims/cycle = SubResource( 32 )
+
+[node name="big_ball_22" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 16, 240 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_22"]
+autoplay = "cycle"
+anims/cycle = SubResource( 33 )
+
+[node name="big_ball_23" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 8, 264 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_23"]
+autoplay = "cycle"
+anims/cycle = SubResource( 34 )
+
+[node name="big_ball_41" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 380, -120 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_41"]
+autoplay = "cycle"
+anims/cycle = SubResource( 35 )
+
+[node name="big_ball_24" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( -8, 252 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_24"]
+autoplay = "cycle"
+anims/cycle = SubResource( 36 )
+
+[node name="big_ball_25" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( -32, 268 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_25"]
+autoplay = "cycle"
+anims/cycle = SubResource( 37 )
+
+[node name="big_ball_26" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( -48, 260 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_26"]
+autoplay = "cycle"
+anims/cycle = SubResource( 38 )
+
+[node name="big_ball_27" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 48, 240 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_27"]
+autoplay = "cycle"
+anims/cycle = SubResource( 39 )
+
+[node name="big_ball_28" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 80, 216 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_28"]
+autoplay = "cycle"
+anims/cycle = SubResource( 40 )
+
+[node name="big_ball_29" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 96, 160 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_29"]
+autoplay = "cycle"
+anims/cycle = SubResource( 41 )
+
+[node name="big_ball_30" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 84, 200 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_30"]
+autoplay = "cycle"
+anims/cycle = SubResource( 42 )
+
+[node name="big_ball_31" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 28, 260 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 144, 160, 24, 24 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/big_ball_31"]
+autoplay = "cycle"
+anims/cycle = SubResource( 43 )
+
+[node name="medium_ball_1" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 192, 24 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_1"]
+autoplay = "cycle"
+anims/cycle = SubResource( 44 )
+
+[node name="medium_ball_2" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 124, 96 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_2"]
+autoplay = "cycle"
+anims/cycle = SubResource( 45 )
+
+[node name="medium_ball_3" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 188, 16 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_3"]
+autoplay = "cycle"
+anims/cycle = SubResource( 46 )
+
+[node name="medium_ball_4" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 200, 12 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_4"]
+autoplay = "cycle"
+anims/cycle = SubResource( 47 )
+
+[node name="medium_ball_5" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 196, 36 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_5"]
+autoplay = "cycle"
+anims/cycle = SubResource( 48 )
+
+[node name="medium_ball_6" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 160, 72 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_6"]
+autoplay = "cycle"
+anims/cycle = SubResource( 49 )
+
+[node name="medium_ball_7" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 140, 108 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_7"]
+autoplay = "cycle"
+anims/cycle = SubResource( 50 )
+
+[node name="medium_ball_8" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 144, 92 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_8"]
+autoplay = "cycle"
+anims/cycle = SubResource( 51 )
+
+[node name="medium_ball_9" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 172, 60 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_9"]
+autoplay = "cycle"
+anims/cycle = SubResource( 52 )
+
+[node name="medium_ball_10" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 204, 24 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_10"]
+autoplay = "cycle"
+anims/cycle = SubResource( 53 )
+
+[node name="medium_ball_36" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 260, -32 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_36"]
+autoplay = "cycle"
+anims/cycle = SubResource( 54 )
+
+[node name="medium_ball_37" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 248, -4 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_37"]
+autoplay = "cycle"
+anims/cycle = SubResource( 55 )
+
+[node name="medium_ball_41" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 360, -116 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_41"]
+autoplay = "cycle"
+anims/cycle = SubResource( 56 )
+
+[node name="medium_ball_42" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 388, -160 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_42"]
+autoplay = "cycle"
+anims/cycle = SubResource( 57 )
+
+[node name="medium_ball_43" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 400, -176 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_43"]
+autoplay = "cycle"
+anims/cycle = SubResource( 58 )
+
+[node name="medium_ball_44" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 424, -188 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_44"]
+autoplay = "cycle"
+anims/cycle = SubResource( 59 )
+
+[node name="medium_ball_45" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 408, -160 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_45"]
+autoplay = "cycle"
+anims/cycle = SubResource( 60 )
+
+[node name="medium_ball_46" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 396, -132 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_46"]
+autoplay = "cycle"
+anims/cycle = SubResource( 61 )
+
+[node name="medium_ball_47" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 388, -188 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_47"]
+autoplay = "cycle"
+anims/cycle = SubResource( 62 )
+
+[node name="medium_ball_48" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 360, -140 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_48"]
+autoplay = "cycle"
+anims/cycle = SubResource( 63 )
+
+[node name="medium_ball_49" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 376, -140 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_49"]
+autoplay = "cycle"
+anims/cycle = SubResource( 64 )
+
+[node name="medium_ball_38" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 292, -60 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_38"]
+autoplay = "cycle"
+anims/cycle = SubResource( 65 )
+
+[node name="medium_ball_39" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 280, -44 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_39"]
+autoplay = "cycle"
+anims/cycle = SubResource( 66 )
+
+[node name="medium_ball_40" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 284, -32 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_40"]
+autoplay = "cycle"
+anims/cycle = SubResource( 67 )
+
+[node name="medium_ball_11" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 184, 52 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_11"]
+autoplay = "cycle"
+anims/cycle = SubResource( 68 )
+
+[node name="medium_ball_12" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 172, 80 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_12"]
+autoplay = "cycle"
+anims/cycle = SubResource( 69 )
+
+[node name="medium_ball_13" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 160, 100 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_13"]
+autoplay = "cycle"
+anims/cycle = SubResource( 70 )
+
+[node name="medium_ball_14" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 108, 116 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_14"]
+autoplay = "cycle"
+anims/cycle = SubResource( 71 )
+
+[node name="medium_ball_15" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 168, 32 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_15"]
+autoplay = "cycle"
+anims/cycle = SubResource( 72 )
+
+[node name="medium_ball_16" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 208, 4 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_16"]
+autoplay = "cycle"
+anims/cycle = SubResource( 73 )
+
+[node name="medium_ball_17" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 220, 4 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_17"]
+autoplay = "cycle"
+anims/cycle = SubResource( 74 )
+
+[node name="medium_ball_18" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 116, 176 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_18"]
+autoplay = "cycle"
+anims/cycle = SubResource( 75 )
+
+[node name="medium_ball_19" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 204, 48 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_19"]
+autoplay = "cycle"
+anims/cycle = SubResource( 76 )
+
+[node name="medium_ball_20" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 228, 32 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_20"]
+autoplay = "cycle"
+anims/cycle = SubResource( 77 )
+
+[node name="medium_ball_22" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 96, 116 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_22"]
+autoplay = "cycle"
+anims/cycle = SubResource( 78 )
+
+[node name="medium_ball_21" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 156, 120 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_21"]
+autoplay = "cycle"
+anims/cycle = SubResource( 79 )
+
+[node name="medium_ball_23" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 108, 144 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_23"]
+autoplay = "cycle"
+anims/cycle = SubResource( 80 )
+
+[node name="medium_ball_24" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 92, 176 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_24"]
+autoplay = "cycle"
+anims/cycle = SubResource( 81 )
+
+[node name="medium_ball_25" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 68, 200 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_25"]
+autoplay = "cycle"
+anims/cycle = SubResource( 82 )
+
+[node name="medium_ball_26" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 52, 224 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_26"]
+autoplay = "cycle"
+anims/cycle = SubResource( 83 )
+
+[node name="medium_ball_27" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 28, 216 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_27"]
+autoplay = "cycle"
+anims/cycle = SubResource( 84 )
+
+[node name="medium_ball_28" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 24, 228 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_28"]
+autoplay = "cycle"
+anims/cycle = SubResource( 85 )
+
+[node name="medium_ball_29" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 0, 244 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_29"]
+autoplay = "cycle"
+anims/cycle = SubResource( 86 )
+
+[node name="medium_ball_30" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( -24, 252 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_30"]
+autoplay = "cycle"
+anims/cycle = SubResource( 87 )
+
+[node name="medium_ball_31" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( -36, 248 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_31"]
+autoplay = "cycle"
+anims/cycle = SubResource( 88 )
+
+[node name="medium_ball_32" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( -16, 268 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_32"]
+autoplay = "cycle"
+anims/cycle = SubResource( 89 )
+
+[node name="medium_ball_33" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 28, 244 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_33"]
+autoplay = "cycle"
+anims/cycle = SubResource( 90 )
+
+[node name="medium_ball_34" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 68, 236 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_34"]
+autoplay = "cycle"
+anims/cycle = SubResource( 91 )
+
+[node name="medium_ball_35" type="Sprite" parent="balls"]
+editor/display_folded = true
+position = Vector2( 84, 244 )
+rotation = 1.74846e-007
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 168, 160, 16, 16 )
+
+[node name="anim" type="AnimationPlayer" parent="balls/medium_ball_35"]
+autoplay = "cycle"
+anims/cycle = SubResource( 92 )
+
+[node name="death" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="death"]
+polygon = PoolVector2Array( 43, 275, 181, 77, 372, -100, 468, -208, 544, -208, 420, -72, 119, 276 )
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 6.0
+pitch_scale = 0.5
+attenuation = 4.75683
+bus = "sfx"

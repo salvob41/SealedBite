@@ -1,0 +1,588 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://zones/forest/stage_07.gd" type="Script" id=1]
+[ext_resource path="res://props/backgrounds/forest_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/tileset_forest.tres" type="TileSet" id=3]
+[ext_resource path="res://props/cave_entrance/cave_entrance.tscn" type="PackedScene" id=4]
+[ext_resource path="res://props/trees/tree_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://props/trees/tree_1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/camera.gd" type="Script" id=8]
+[ext_resource path="res://assets/wolf.png" type="Texture" id=9]
+[ext_resource path="res://assets/player.png" type="Texture" id=10]
+[ext_resource path="res://assets/sfx/player_punch_blast.wav" type="AudioStream" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 72 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 68 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 4 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 60 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 60 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../forest_cover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../forest_cover:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../forest_cover:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../forest_cover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../forest_cover:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../forest_cover:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0.85034, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+width = 4
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 2
+emission_box_extents = Vector3( 4, 1, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 10, 0 )
+initial_velocity = 20.0
+angular_velocity = 1.44662e-032
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 9 )
+
+[sub_resource type="Animation" id=11]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 38, 39 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 7.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 192, 28 ), Vector2( -172, 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.25, 0.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../flash:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.25, 0.3, 0.35, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 0, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 0.7, 6.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_set_knocked_out"
+}, {
+"args": [  ],
+"method": "_finish_knocked_out"
+}, {
+"args": [  ],
+"method": "_move_to_next"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("wolf_attack")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0.35 )
+}
+
+[sub_resource type="Animation" id=13]
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 192, -0.25, 0, 0.25, 0, 124, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 28, -0.25, 0, 0.145278, -79.84, 44, -0.189843, -74.24, 0.236768, -61.28 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("frame_animations")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "idle" ),
+"times": PoolRealArray( 0.6 )
+}
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 192, 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../flash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="stage_07" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="forest_parallax_background" parent="." instance=ExtResource( 2 )]
+scroll_base_offset = Vector2( 0, 32 )
+
+[node name="forest_background" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 786443, 5, 0, 786444, 5, 3, 786445, 5, 1, 786446, 5, 3, 786447, 5, 1, 786448, 5, 3, 786449, 5, 4, 786450, 5, 0, 786451, 5, 0, 851974, 5, 0, 851975, 5, 3, 851976, 5, 1, 851977, 5, 2, 851978, 5, 4, 851979, 5, 262144, 851980, 5, 6, 851981, 5, 65537, 851982, 5, 65539, 851983, 5, 65537, 851984, 5, 131073, 851985, 5, 196612, 851987, 5, 0, 851988, 5, 4, 851990, 5, 0, 851991, 5, 1, 851992, 5, 4, 917508, 5, 0, 917509, 5, 0, 917510, 5, 262144, 917511, 5, 262147, 917512, 5, 262147, 917513, 5, 262146, 917514, 5, 262148, 917516, 5, 131072, 917517, 5, 65537, 917518, 5, 196611, 917519, 5, 65538, 917520, 5, 65537, 917521, 5, 131076, 917523, 5, 262144, 917524, 5, 262148, 917525, 5, 0, 917526, 5, 196608, 917527, 5, 65537, 917528, 5, 65541, 917529, 5, 4, 917530, 5, 0, 983052, 5, 196608, 983053, 5, 131075, 983054, 5, 131073, 983055, 5, 65537, 983056, 5, 65537, 983057, 5, 65540, 983062, 5, 262144, 983063, 5, 262145, 983064, 5, 262146, 983065, 5, 262148, 1048588, 5, 196608, 1048589, 5, 65537, 1048590, 5, 65537, 1048591, 5, 65537, 1048592, 5, 65537, 1048593, 5, 65540, 1114124, 5, 131072, 1114125, 5, 65537, 1114126, 5, 65537, 1114127, 5, 65537, 1114128, 5, 65537, 1114129, 5, 196612, 1179660, 5, 196608, 1179661, 5, 131075, 1179662, 5, 65537, 1179663, 5, 65537, 1179664, 5, 65537, 1179665, 5, 131076, 1245196, 5, 65536, 1245197, 5, 65537, 1245198, 5, 131073, 1245199, 5, 65537, 1245200, 5, 65537, 1245201, 5, 196612, 1310732, 5, 262144, 1310733, 5, 262146, 1310734, 5, 262147, 1310735, 5, 262146, 1310736, 5, 262145, 1310737, 5, 262148 )
+
+[node name="background_props" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cave_entrance" parent="background_props" instance=ExtResource( 4 )]
+position = Vector2( 120, 96 )
+
+[node name="tree_2_" parent="background_props" instance=ExtResource( 5 )]
+position = Vector2( 76, 96 )
+
+[node name="tree_1_" parent="background_props" instance=ExtResource( 6 )]
+position = Vector2( 164, 96 )
+
+[node name="enemies" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player" parent="." instance=ExtResource( 7 )]
+position = Vector2( -80, 56 )
+
+[node name="camera" type="Camera2D" parent="player"]
+current = true
+process_mode = 0
+limit_smoothed = true
+smoothing_enabled = true
+editor_draw_screen = false
+editor_draw_limits = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="forest" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( -196613, 2, 0, -196612, 2, 2, -196611, 2, 1, -196610, 2, 3, -196609, 2, 1, -262144, 2, 1, -262143, 2, 1, -262142, 2, 1, -262141, 2, 1, -262140, 2, 1, -262139, 2, 2, -262138, 2, 3, -262137, 2, 2, -262136, 2, 1, -262135, 2, 2, -262134, 2, 2, -262133, 2, 3, -262132, 2, 3, -262131, 2, 2, -262130, 2, 2, -262129, 2, 3, -262128, 2, 2, -262127, 2, 2, -262126, 2, 3, -262125, 2, 2, -262124, 2, 2, -262123, 2, 3, -262122, 2, 2, -262121, 2, 1, -262120, 2, 2, -262119, 2, 1, -262118, 2, 1, -262117, 2, 1, -262116, 2, 2, -262115, 2, 3, -262114, 2, 2, -262113, 2, 3, -262112, 2, 2, -262111, 2, 3, -262110, 2, 4, -131077, 2, 131072, -131076, 2, 5, -131075, 2, 262147, -131074, 2, 262146, -131073, 2, 262147, -196608, 2, 262147, -196607, 2, 262146, -196606, 2, 262147, -196605, 2, 262147, -196604, 2, 262145, -196603, 2, 262147, -196602, 2, 262147, -196601, 2, 262147, -196600, 2, 262146, -196599, 2, 262146, -196598, 2, 262147, -196597, 2, 262145, -196596, 2, 262145, -196595, 2, 262145, -196594, 2, 262147, -196593, 2, 262146, -196592, 2, 262146, -196591, 2, 262147, -196590, 2, 262147, -196589, 2, 262146, -196588, 2, 262145, -196587, 2, 262145, -196586, 2, 262146, -196585, 2, 262146, -196584, 2, 262147, -196583, 2, 262146, -196582, 2, 262146, -196581, 2, 262145, -196580, 2, 262146, -196579, 2, 262147, -196578, 2, 262146, -196577, 2, 262146, -196576, 2, 262147, -196575, 2, 6, -196574, 2, 131076, -65541, 2, 196608, -65540, 2, 131076, -131039, 2, 131072, -131038, 2, 196612, -5, 2, 65536, -4, 2, 131076, -65503, 2, 131072, -65502, 2, 131076, 65531, 2, 65536, 65532, 2, 65540, 33, 2, 65536, 34, 2, 131076, 131067, 2, 196608, 131068, 2, 196612, 65569, 2, 65536, 65570, 2, 196612, 196603, 2, 131072, 196604, 2, 196612, 131105, 2, 196608, 131106, 2, 65540, 262139, 2, 131072, 262140, 2, 131076, 196641, 2, 196608, 196642, 2, 131076, 327675, 2, 196608, 327676, 2, 65540, 262177, 2, 131072, 262178, 2, 196612, 393211, 2, 65536, 393212, 2, 196612, 327713, 2, 131072, 327714, 2, 196612, 458747, 2, 65536, 458748, 2, 131076, 393249, 2, 65536, 393250, 2, 131076, 524283, 2, 131072, 524284, 2, 65540, 458785, 2, 65536, 458786, 2, 131076, 589819, 2, 65536, 589820, 2, 65540, 524321, 2, 65536, 524322, 2, 131076, 655355, 2, 65536, 655356, 2, 196612, 589857, 2, 65536, 589858, 2, 131076, 720891, 2, 65536, 720892, 2, 196612, 655393, 2, 65536, 655394, 2, 131076, 786427, 2, 131072, 786428, 2, 65540, 720929, 2, 131072, 720930, 2, 131076, 851963, 2, 65536, 851964, 2, 131076, 786440, 2, 0, 786441, 2, 3, 786442, 2, 1, 786443, 2, 2, 786444, 2, 4, 786449, 2, 0, 786450, 2, 2, 786451, 2, 2, 786452, 2, 2, 786453, 2, 4, 786465, 2, 196608, 786466, 2, 131076, 917499, 2, 131072, 917500, 2, 65540, 851976, 2, 131072, 851977, 2, 65537, 851978, 2, 65537, 851979, 2, 65537, 851980, 2, 65540, 851985, 2, 196608, 851986, 2, 65537, 851987, 2, 65537, 851988, 2, 65537, 851989, 2, 131076, 852001, 2, 196608, 852002, 2, 131076, 983035, 2, 65536, 983036, 2, 65541, 983037, 2, 2, 983038, 2, 1, 983039, 2, 2, 917504, 2, 3, 917505, 2, 2, 917506, 2, 2, 917507, 2, 2, 917508, 2, 2, 917509, 2, 3, 917510, 2, 2, 917511, 2, 2, 917512, 2, 65542, 917513, 2, 65537, 917514, 2, 65537, 917515, 2, 65537, 917516, 2, 196612, 917521, 2, 196608, 917522, 2, 65537, 917523, 2, 65537, 917524, 2, 196609, 917525, 2, 65541, 917526, 2, 1, 917527, 2, 1, 917528, 2, 3, 917529, 2, 2, 917530, 2, 3, 917531, 2, 2, 917532, 2, 2, 917533, 2, 1, 917534, 2, 3, 917535, 2, 3, 917536, 2, 2, 917537, 2, 65542, 917538, 2, 131076, 1048571, 2, 65536, 1048572, 2, 65537, 1048573, 2, 65537, 1048574, 2, 65537, 1048575, 2, 65537, 983040, 2, 65537, 983041, 2, 65537, 983042, 2, 65539, 983043, 2, 65537, 983044, 2, 65537, 983045, 2, 65537, 983046, 2, 65537, 983047, 2, 65537, 983048, 2, 196609, 983049, 2, 65537, 983050, 2, 65537, 983051, 2, 65537, 983052, 2, 65540, 983057, 2, 65536, 983058, 2, 65537, 983059, 2, 65537, 983060, 2, 65539, 983061, 2, 65537, 983062, 2, 65537, 983063, 2, 65537, 983064, 2, 65537, 983065, 2, 65537, 983066, 2, 65537, 983067, 2, 65537, 983068, 2, 131073, 983069, 2, 65537, 983070, 2, 65537, 983071, 2, 131074, 983072, 2, 65537, 983073, 2, 65537, 983074, 2, 65540, 1114107, 2, 196608, 1114108, 2, 196610, 1114109, 2, 65537, 1114110, 2, 131075, 1114111, 2, 65537, 1048576, 2, 65537, 1048577, 2, 65537, 1048578, 2, 65537, 1048579, 2, 65537, 1048580, 2, 65537, 1048581, 2, 65537, 1048582, 2, 131073, 1048583, 2, 65537, 1048584, 2, 196610, 1048585, 2, 65539, 1048586, 2, 65537, 1048587, 2, 65539, 1048588, 2, 196612, 1048593, 2, 131072, 1048594, 2, 65537, 1048595, 2, 65537, 1048596, 2, 65537, 1048597, 2, 65537, 1048598, 2, 65537, 1048599, 2, 65539, 1048600, 2, 196611, 1048601, 2, 65537, 1048602, 2, 65537, 1048603, 2, 65537, 1048604, 2, 65537, 1048605, 2, 65537, 1048606, 2, 65537, 1048607, 2, 65537, 1048608, 2, 65537, 1048609, 2, 65537, 1048610, 2, 65540, 1179643, 2, 196608, 1179644, 2, 65537, 1179645, 2, 65537, 1179646, 2, 65537, 1179647, 2, 65537, 1114112, 2, 65537, 1114113, 2, 131074, 1114114, 2, 65537, 1114115, 2, 65537, 1114116, 2, 65537, 1114117, 2, 65537, 1114118, 2, 65537, 1114119, 2, 65537, 1114120, 2, 65537, 1114121, 2, 65537, 1114122, 2, 65537, 1114123, 2, 65537, 1114124, 2, 65540, 1114129, 2, 65536, 1114130, 2, 65537, 1114131, 2, 65537, 1114132, 2, 65537, 1114133, 2, 65537, 1114134, 2, 65537, 1114135, 2, 65537, 1114136, 2, 131074, 1114137, 2, 65537, 1114138, 2, 65537, 1114139, 2, 65537, 1114140, 2, 65537, 1114141, 2, 65537, 1114142, 2, 65537, 1114143, 2, 65537, 1114144, 2, 131073, 1114145, 2, 65539, 1114146, 2, 65540, 1245179, 2, 65536, 1245180, 2, 65537, 1245181, 2, 65537, 1245182, 2, 196609, 1245183, 2, 65537, 1179648, 2, 65537, 1179649, 2, 65537, 1179650, 2, 65537, 1179651, 2, 65537, 1179652, 2, 65537, 1179653, 2, 196610, 1179654, 2, 65537, 1179655, 2, 65537, 1179656, 2, 65537, 1179657, 2, 65537, 1179658, 2, 131073, 1179659, 2, 65537, 1179660, 2, 196612, 1179665, 2, 196608, 1179666, 2, 65537, 1179667, 2, 65537, 1179668, 2, 65537, 1179669, 2, 131073, 1179670, 2, 65537, 1179671, 2, 65537, 1179672, 2, 65537, 1179673, 2, 65537, 1179674, 2, 65537, 1179675, 2, 196610, 1179676, 2, 65537, 1179677, 2, 65537, 1179678, 2, 65537, 1179679, 2, 65537, 1179680, 2, 196611, 1179681, 2, 65537, 1179682, 2, 65540, 1310715, 2, 65536, 1310716, 2, 65537, 1310717, 2, 65537, 1310718, 2, 65537, 1310719, 2, 196609, 1245184, 2, 196611, 1245185, 2, 65537, 1245186, 2, 65537, 1245187, 2, 65537, 1245188, 2, 131075, 1245189, 2, 65537, 1245190, 2, 65537, 1245191, 2, 65537, 1245192, 2, 131074, 1245193, 2, 65537, 1245194, 2, 65537, 1245195, 2, 65537, 1245196, 2, 196612, 1245201, 2, 65536, 1245202, 2, 65538, 1245203, 2, 65539, 1245204, 2, 196611, 1245205, 2, 65537, 1245206, 2, 65537, 1245207, 2, 65537, 1245208, 2, 65538, 1245209, 2, 65537, 1245210, 2, 65537, 1245211, 2, 65537, 1245212, 2, 65537, 1245213, 2, 65538, 1245214, 2, 65537, 1245215, 2, 131074, 1245216, 2, 65537, 1245217, 2, 131073, 1245218, 2, 196612, 1376251, 2, 262144, 1376252, 2, 262145, 1376253, 2, 262147, 1376254, 2, 262146, 1376255, 2, 262145, 1310720, 2, 262147, 1310721, 2, 262147, 1310722, 2, 262145, 1310723, 2, 262147, 1310724, 2, 262145, 1310725, 2, 262145, 1310726, 2, 262147, 1310727, 2, 262146, 1310728, 2, 262145, 1310729, 2, 262146, 1310730, 2, 262147, 1310731, 2, 262147, 1310732, 2, 262148, 1310737, 2, 262144, 1310738, 2, 262146, 1310739, 2, 262147, 1310740, 2, 262146, 1310741, 2, 262145, 1310742, 2, 262147, 1310743, 2, 262147, 1310744, 2, 262145, 1310745, 2, 262146, 1310746, 2, 262146, 1310747, 2, 262146, 1310748, 2, 262146, 1310749, 2, 262147, 1310750, 2, 262147, 1310751, 2, 262145, 1310752, 2, 262145, 1310753, 2, 262147, 1310754, 2, 262148 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="forest_cover" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 786444, 2, 2, 786445, 2, 3, 786446, 2, 3, 786447, 2, 3, 786448, 2, 1, 786449, 2, 3, 851980, 2, 65537, 851981, 2, 65537, 851982, 2, 65537, 851983, 2, 65537, 851984, 2, 65539, 851985, 2, 65537, 917516, 2, 65537, 917517, 2, 65537, 917518, 2, 196609, 917519, 2, 65537, 917520, 2, 65537, 917521, 2, 65537, 983052, 2, 65537, 983053, 2, 65537, 983054, 2, 65537, 983055, 2, 65537, 983056, 2, 196609, 983057, 2, 65537, 1048588, 2, 65537, 1048589, 2, 65537, 1048590, 2, 65537, 1048591, 2, 65537, 1048592, 2, 65537, 1048593, 2, 65537, 1114124, 2, 65537, 1114125, 2, 196610, 1114126, 2, 65537, 1114127, 2, 65537, 1114128, 2, 196611, 1114129, 2, 65537, 1179660, 2, 65537, 1179661, 2, 65537, 1179662, 2, 65537, 1179663, 2, 65537, 1179664, 2, 65537, 1179665, 2, 65537, 1245196, 2, 65537, 1245197, 2, 65537, 1245198, 2, 65537, 1245199, 2, 65537, 1245200, 2, 65537, 1245201, 2, 65537, 1310732, 2, 65537, 1310733, 2, 65537, 1310734, 2, 65537, 1310735, 2, 65537, 1310736, 2, 131074, 1310737, 2, 65537 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="forest_foreground" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 720905, 3, 0, 720906, 3, 4, 720916, 3, 1, 720917, 3, 4, 851971, 3, 3, 851972, 3, 6, 851994, 3, 5, 851995, 3, 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="camera_limit_NW" type="Position2D" parent="."]
+position = Vector2( -8, -8 )
+
+[node name="camera_limit_SE" type="Position2D" parent="."]
+position = Vector2( 248, 144 )
+
+[node name="starting_position" type="Area2D" parent="."]
+position = Vector2( 0, 112 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="starting_position"]
+position = Vector2( -20, -72 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="finish_position" type="Area2D" parent="."]
+position = Vector2( 240, 112 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="finish_position"]
+position = Vector2( 20, -68 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="finish_position2" type="Area2D" parent="."]
+position = Vector2( 120, 148 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="finish_position2"]
+position = Vector2( 0, 8 )
+shape = SubResource( 3 )
+
+[node name="wolf_dialog_area" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 124, 72 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="contact_collision" type="CollisionShape2D" parent="wolf_dialog_area"]
+position = Vector2( -80, -20 )
+shape = SubResource( 4 )
+
+[node name="Label" type="Label" parent="wolf_dialog_area"]
+visible = false
+margin_top = -40.0
+margin_right = 160.0
+margin_bottom = -9.0
+text = "Hello little pup.
+I've been waiting for you."
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="black_chrystal_area" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 124, 72 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="contact_collision" type="CollisionShape2D" parent="black_chrystal_area"]
+position = Vector2( 84, -20 )
+shape = SubResource( 5 )
+
+[node name="anim" type="AnimationPlayer" parent="black_chrystal_area"]
+autoplay = "default"
+anims/default = SubResource( 6 )
+anims/fade = SubResource( 7 )
+
+[node name="wolf_contact_area" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 112, 52 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="contact_collision" type="CollisionShape2D" parent="wolf_contact_area"]
+position = Vector2( -8, -12 )
+shape = SubResource( 4 )
+
+[node name="wolf" type="Sprite" parent="wolf_contact_area"]
+position = Vector2( 192, 28 )
+texture = ExtResource( 9 )
+flip_h = true
+vframes = 8
+hframes = 8
+frame = 8
+
+[node name="Particles2D" type="Particles2D" parent="wolf_contact_area/wolf"]
+position = Vector2( 24, 8 )
+emitting = false
+amount = 400
+lifetime = 3.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.4
+visibility_rect = Rect2( -200, -100, 400, 200 )
+local_coords = false
+process_material = SubResource( 10 )
+
+[node name="mask" type="Sprite" parent="wolf_contact_area/wolf"]
+modulate = Color( 1, 1, 1, 0.568627 )
+position = Vector2( -8, 24 )
+texture = ExtResource( 10 )
+offset = Vector2( 4, -16 )
+flip_h = true
+vframes = 16
+hframes = 8
+frame = 39
+
+[node name="animate_mask" type="AnimationPlayer" parent="wolf_contact_area/wolf/mask"]
+anims/cycle = SubResource( 11 )
+
+[node name="animate_wolf" type="AnimationPlayer" parent="wolf_contact_area/wolf"]
+autoplay = "default"
+anims/attack = SubResource( 12 )
+anims/begin = SubResource( 13 )
+anims/default = SubResource( 14 )
+
+[node name="frame_animations" type="AnimationPlayer" parent="wolf_contact_area/wolf"]
+anims/idle = SubResource( 15 )
+
+[node name="wolf_attack" type="AudioStreamPlayer" parent="wolf_contact_area/wolf"]
+
+[node name="flash" type="Polygon2D" parent="wolf_contact_area"]
+visible = false
+position = Vector2( 0, -4 )
+polygon = PoolVector2Array( -164, -96, 176, -96, 176, 132, -164, 132 )

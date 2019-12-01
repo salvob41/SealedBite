@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/explosion.png" type="Texture" id=1]
+[ext_resource path="res://assets/sfx/enemy_explosion.wav" type="AudioStream" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dust_0"
+length = 0.8
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="explosion" type="Sprite"]
+z_index = 2
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 4
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "dust_0"
+playback_process_mode = 0
+playback_speed = 1.5
+anims/dust_0 = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+bus = "sfx"

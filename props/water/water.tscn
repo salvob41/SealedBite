@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/water_material.tres" type="Material" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://props/water/water.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+
+[node name="water" type="TextureRect"]
+material = ExtResource( 1 )
+margin_right = 352.0
+margin_bottom = 64.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 3 )
+
+[node name="player_death" type="Area2D" parent="."]
+visible = false
+monitoring = false
+collision_layer = 256
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="player_death"]
+shape = SubResource( 1 )
+disabled = true
+__meta__ = {
+"_edit_lock_": true
+}

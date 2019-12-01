@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chrystal_pickup.wav-b3aa7e65d6bc3c980352a48580474990.sample"
+
+[deps]
+
+source_file="res://assets/sfx/chrystal_pickup.wav"
+dest_files=[ "res://.import/chrystal_pickup.wav-b3aa7e65d6bc3c980352a48580474990.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

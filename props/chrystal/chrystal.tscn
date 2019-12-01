@@ -1,0 +1,160 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://props/chrystal/chrystal.gd" type="Script" id=1]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/chrystal_acquired.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/chrystal_pickup.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 3.5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "black"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("chrystal:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 96, 176, 8, 16 ), Rect2( 104, 176, 8, 16 ), Rect2( 112, 176, 8, 16 ), Rect2( 120, 176, 8, 16 ), Rect2( 96, 176, 8, 16 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "blue"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("chrystal:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 96, 160, 8, 16 ), Rect2( 104, 160, 8, 16 ), Rect2( 112, 160, 8, 16 ), Rect2( 120, 160, 8, 16 ), Rect2( 96, 160, 8, 16 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("chrystal:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 64, 160, 8, 16 ), Rect2( 72, 160, 8, 16 ), Rect2( 80, 160, 8, 16 ), Rect2( 88, 160, 8, 16 ), Rect2( 64, 160, 8, 16 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "red"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("chrystal:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 64, 176, 8, 16 ), Rect2( 72, 176, 8, 16 ), Rect2( 80, 176, 8, 16 ), Rect2( 88, 176, 8, 16 ), Rect2( 64, 176, 8, 16 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("chrystal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -17 ), Vector2( 0, -24 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1, 3 )
+
+[node name="chrystal" type="StaticBody2D"]
+script = ExtResource( 1 )
+type = 2
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3.5 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="base" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 40, 184, 16, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="chrystal" type="Sprite" parent="."]
+position = Vector2( 0, -18.2452 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 160, 8, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/black = SubResource( 2 )
+anims/blue = SubResource( 3 )
+anims/green = SubResource( 4 )
+anims/red = SubResource( 5 )
+
+[node name="anim_up_down" type="AnimationPlayer" parent="."]
+autoplay = "cycle"
+playback_speed = 0.5
+anims/cycle = SubResource( 6 )
+
+[node name="detect_player" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="detect_player"]
+position = Vector2( 0, -15 )
+shape = SubResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="tween2" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="acquired" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "sfx"
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "sfx"
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered" flags=7]

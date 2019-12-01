@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/player_step.wav-11564909ed5e529dd16ab09ef75a00e0.sample"
+
+[deps]
+
+source_file="res://assets/sfx/player_step.wav"
+dest_files=[ "res://.import/player_step.wav-11564909ed5e529dd16ab09ef75a00e0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

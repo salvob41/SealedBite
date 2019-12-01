@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://screens/pause_screen/pause_screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=2]
+[ext_resource path="res://scripts/menu_item.gd" type="Script" id=3]
+
+[node name="pause_screen" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.152941 )
+position = Vector2( 160, 90 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="continue" type="Node2D" parent="."]
+position = Vector2( 135, 67 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="continue"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Continue"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="quit" type="Node2D" parent="."]
+position = Vector2( 150, 107 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="quit"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Quit"
+__meta__ = {
+"_edit_lock_": true
+}

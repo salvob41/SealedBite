@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/tileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[node name="moving_block_5_" type="KinematicBody2D"]
+motion/sync_to_physics = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 20 )
+shape = SubResource( 1 )
+
+[node name="tileset" type="Sprite" parent="."]
+position = Vector2( 0, 20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 40, 40 )

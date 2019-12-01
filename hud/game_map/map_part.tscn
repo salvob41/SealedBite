@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/game_map.png" type="Texture" id=1]
+[ext_resource path="res://hud/game_map/map_part.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cycle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 10, 10, 10, 1 ) ]
+}
+
+[node name="zones_forest_stage_01" type="Sprite"]
+position = Vector2( 0, 48 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 48, 24, 8 )
+script = ExtResource( 2 )
+
+[node name="flash_anim" type="AnimationPlayer" parent="."]
+anims/cycle = SubResource( 1 )

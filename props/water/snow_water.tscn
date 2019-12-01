@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://props/water/water.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment()
+{
+	//vec2 uv = UV;
+	//float r = TEXTURE_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.y;
+	//vec2 suv = vec2( SCREEN_UV.x, 1.0-SCREEN_UV.y );
+	
+	//float mix_ratio = 0.5;
+	//float vstretch = 1.0;
+	
+	// compute ration between the screen uv and the texture uv
+	vec2 tex_to_screen_uv_ratio = SCREEN_PIXEL_SIZE / TEXTURE_PIXEL_SIZE;
+	
+	// compute UV of the flipped screen
+	vec2 flipped_screen_uv = vec2( SCREEN_UV.x, 
+		SCREEN_UV.y + 2.0 * UV.y * tex_to_screen_uv_ratio.y );
+	vec2 suv = vec2( SCREEN_UV.x, SCREEN_UV.y + 2.0 * UV.y * tex_to_screen_uv_ratio.y );
+	suv.x += 10.0 * SCREEN_PIXEL_SIZE.x * sin( 20.0 * UV.y  + TIME ) * UV.y;
+	
+	
+	vec4 c1 = textureLod( SCREEN_TEXTURE, suv, 0.0 );
+	//vec4 c2 = textureLod( SCREEN_TEXTURE, SCREEN_UV, 0.0 );
+	c1 = mix( c1, vec4( 0.2, 0.2, 0.25, 1.0 ), 0.3 );
+	
+	COLOR = c1;//mix( c1, c2, 0.0 );
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+
+[node name="snow_water" type="TextureRect"]
+material = SubResource( 2 )
+margin_right = 352.0
+margin_bottom = 64.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 2 )
+
+[node name="player_death" type="Area2D" parent="."]
+visible = false
+monitoring = false
+collision_layer = 256
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="collision" type="CollisionShape2D" parent="player_death"]
+shape = SubResource( 3 )
+disabled = true
+__meta__ = {
+"_edit_lock_": true
+}

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/trees.png" type="Texture" id=1]
+
+[node name="snow_tree_2_" type="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( -3, -20 )
+region_enabled = true
+region_rect = Rect2( 48, 64, 48, 40 )

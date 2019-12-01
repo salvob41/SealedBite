@@ -1,0 +1,252 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://enemies/slime/slime.gd" type="Script" id=1]
+[ext_resource path="res://assets/slime_enemy.png" type="Texture" id=2]
+[ext_resource path="res://enemies/slime/states/run.gd" type="Script" id=3]
+[ext_resource path="res://enemies/slime/states/jump.gd" type="Script" id=4]
+[ext_resource path="res://enemies/slime/states/hit.gd" type="Script" id=5]
+[ext_resource path="res://enemies/slime/states/dead.gd" type="Script" id=6]
+[ext_resource path="res://enemies/slime/states/cave_dead.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18, 12 )
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate/slime_enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate/slime_enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 5, 0, 6, 0, 6, 0, 6, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rotate/slime_enemy:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate/slime_enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 32, 33, 34, 35, 36 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rotate/slime_enemy:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends FSM_State
+
+var timer : float
+
+func initialize():
+	timer = 0.2
+	obj.anim_nxt = \"hit\"
+
+
+func run( delta ):
+	timer -= delta
+	if timer <= 0:
+		fsm.state_nxt = fsm.states.run
+
+func terminate():
+	obj.get_node( \"damagebox/damage_collision\" ).disabled = false"
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 4, 1 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 5, 1 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5, 2 )
+
+[node name="cave_slime" type="KinematicBody2D"]
+collision_layer = 8
+script = ExtResource( 1 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -2 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="rotate" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="detect_player" type="Area2D" parent="rotate"]
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="exploding_timer" type="Timer" parent="rotate/detect_player"]
+process_mode = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotate/detect_player"]
+position = Vector2( 18, -12 )
+shape = SubResource( 2 )
+
+[node name="slime_enemy" type="Sprite" parent="rotate"]
+position = Vector2( 0, 16 )
+texture = ExtResource( 2 )
+offset = Vector2( -1, -16 )
+vframes = 8
+hframes = 8
+frame = 32
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ray_down" type="RayCast2D" parent="rotate"]
+visible = false
+position = Vector2( 7, -1 )
+enabled = true
+cast_to = Vector2( 0, 2 )
+collision_mask = 1025
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ray_front" type="RayCast2D" parent="rotate"]
+visible = false
+position = Vector2( 6, -2 )
+enabled = true
+cast_to = Vector2( 2, 0 )
+collision_mask = 1025
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/hit = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 5 )
+
+[node name="states" type="Node" parent="."]
+
+[node name="run" type="Node" parent="states"]
+script = ExtResource( 3 )
+
+[node name="jump" type="Node" parent="states"]
+script = ExtResource( 4 )
+
+[node name="hit" type="Node" parent="states"]
+script = ExtResource( 5 )
+
+[node name="dead" type="Node" parent="states"]
+script = ExtResource( 6 )
+
+[node name="cooldown" type="Node" parent="states"]
+script = SubResource( 6 )
+
+[node name="cave_dead" type="Node" parent="states"]
+script = ExtResource( 7 )
+
+[node name="damagebox" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 4
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="damage_collision" type="CollisionShape2D" parent="damagebox"]
+position = Vector2( 0, -1 )
+shape = SubResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="jumpbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 128
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="jumpcollision" type="CollisionShape2D" parent="jumpbox"]
+position = Vector2( 0, -4 )
+shape = SubResource( 8 )
+disabled = true
+one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 16
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hitbox_collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2( 0, -2 )
+shape = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="body_entered" from="rotate/detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="timeout" from="rotate/detect_player/exploding_timer" to="." method="_on_exploding_timer_timeout" flags=3]
+[connection signal="area_entered" from="jumpbox" to="." method="_on_jumpbox_area_entered" flags=3]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered" flags=3]

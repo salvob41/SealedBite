@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/player_punch_blast_old.wav-caf358e784de487783f1c94f769371c0.sample"
+
+[deps]
+
+source_file="res://assets/sfx/player_punch_blast_old.wav"
+dest_files=[ "res://.import/player_punch_blast_old.wav-caf358e784de487783f1c94f769371c0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

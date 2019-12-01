@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/clock.png" type="Texture" id=1]
+[ext_resource path="res://player/clock/clock.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float max_angle = 0.1;
+
+void fragment()
+{
+	vec2 pos = UV - vec2( 0.5 );
+	float r = length( pos );
+	float a = atan( pos.y,pos.x );
+	
+	float alpha = step( a, ( max_angle - 0.5 ) * 6.28318530718 );
+	vec4 c = texture( TEXTURE, UV );
+	COLOR = vec4( c.rgb, c.a * alpha );
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/max_angle = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "cycle"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/max_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.627451 ), Color( 1, 1, 1, 0.627451 ), Color( 1, 0, 0, 0.627451 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.627451 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/max_angle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="clock" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.627451 )
+material = SubResource( 2 )
+rotation = 1.5708
+z_index = 10
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 10.0
+anims/cycle = SubResource( 3 )
+anims/default = SubResource( 4 )

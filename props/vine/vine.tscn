@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://props/vine/vine.gd" type="Script" id=1]
+
+[node name="vine" type="Line2D"]
+position = Vector2( 24, 16 )
+points = PoolVector2Array( 0, 0, 40, 80, 64, 32 )
+width = 1.0
+default_color = Color( 0.160784, 0.184314, 0.313726, 0 )
+texture_mode = 1675231235
+script = ExtResource( 1 )
+alpha = 0.75
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

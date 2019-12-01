@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://props/forest_spirit/forest_spirit.gd" type="Script" id=1]
+[ext_resource path="res://assets/spirit_particles.png" type="Texture" id=2]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=3]
+[ext_resource path="res://assets/light_mask_hard.png" type="Texture" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.219512, 0.906897, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.65098, 0.988235, 0.858824, 1, 0.65098, 0.988235, 0.858824, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+gravity = Vector3( 0, 3, 0 )
+angular_velocity = 200.0
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 5.0
+color_ramp = SubResource( 3 )
+anim_speed = 1.5
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.906897, 1 )
+colors = PoolColorArray( 0.65098, 0.988235, 0.858824, 1, 0.65098, 0.988235, 0.858824, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+gravity = Vector3( 0, 3, 0 )
+angular_velocity = 200.0
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 5.0
+color_ramp = SubResource( 6 )
+anim_speed = 1.5
+
+[sub_resource type="Animation" id=8]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spirit_particles:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, -8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spirit_particles/Light2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.4, 0.6, 0.5, 0.4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dark_particles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, -8 ) ]
+}
+
+[node name="forest_spirit" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="dark_particles" type="Particles2D" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, -8 )
+emitting = false
+amount = 100
+lifetime = 3.0
+preprocess = 20.0
+local_coords = false
+process_material = SubResource( 4 )
+texture = ExtResource( 2 )
+
+[node name="spirit_particles" type="Particles2D" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, -8 )
+amount = 100
+lifetime = 3.0
+preprocess = 20.0
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 2 )
+
+[node name="pixel" type="Sprite" parent="spirit_particles"]
+position = Vector2( -4, -4 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 56, 168, 8, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Light2D" type="Light2D" parent="spirit_particles"]
+texture = ExtResource( 4 )
+color = Color( 0.65098, 0.988235, 0.858824, 1 )
+energy = 0.55
+
+[node name="wave_animation" type="AnimationPlayer" parent="."]
+autoplay = "cycle"
+playback_speed = 0.3
+anims/cycle = SubResource( 8 )
